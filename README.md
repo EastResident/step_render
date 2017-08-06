@@ -1,8 +1,7 @@
 # StepRender
-Short description and motivation.
+It is very easy to enable lazy loading of partial with scroll in views.
 
-## Usage
-How to use my plugin.
+You only use `step_render` method instead of `render` method.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -16,9 +15,33 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
-```bash
-$ gem install step_render
+## Usage
+
+1. Load javascript library
+
+This plugin depends on [lazysizes](https://github.com/aFarkas/lazysizes).
+If you do not import lazysizes to your application, load `import_step_render` method in required view.
+
+#### Example
+
+```html:application.html.erb
+<head>
+  ~~~
+  ~~~
+  <%= import_step_render %>
+  ~~~
+</head>
+```
+
+2. Use `step_render` method instead of `render` method
+
+Replace `render` helper method used to rendering the partial with `step_render`.
+Partial must be specified as an absolute path.
+
+#### Example
+
+```html:app/views/top/index.html.erb
+<%= step_render 'top/partial_name' %>
 ```
 
 ## Contributing
