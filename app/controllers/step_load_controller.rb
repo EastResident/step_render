@@ -5,4 +5,12 @@ class StepLoadController < ApplicationController
     @options = ActiveJob::Arguments.deserialize(Marshal.load(cookies.signed[params[:key]]))
     render inline: "<%= render *@options %>"
   end
+
+  def fetch
+    if params[:key]
+      render inline: "<%= cache '#{params[:key]}', skip_digest: true do %><% end %>"
+    else
+      render nothing: true unless params[:key]
+    end
+  end
 end
