@@ -17,14 +17,15 @@ $ bundle
 
 ## Usage
 
-1. Load javascript library
+### 1. Load javascript library
 
 This plugin depends on [lazysizes](https://github.com/aFarkas/lazysizes).
 If you do not import lazysizes to your application, load `import_step_render` method in required view.
 
 #### Example
 
-```html:application.html.erb
+`application.html.erb`
+```html
 <head>
   ~~~
   ~~~
@@ -33,14 +34,15 @@ If you do not import lazysizes to your application, load `import_step_render` me
 </head>
 ```
 
-2. Use `step_render` method instead of `render` method
+### 2. Use `step_render` method instead of `render` method
 
 Replace `render` helper method used to rendering the partial with `step_render`.
 Partial must be specified as an absolute path.
 
 #### Example
 
-```html:app/views/top/index.html.erb
+`app/views/top/index.html.erb`
+```html
 <%= step_render 'top/partial_name' %>
 ```
 
