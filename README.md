@@ -3,6 +3,8 @@ It is very easy to enable lazy loading of partial with scroll in views.
 
 You only use `step_render` method instead of `render` method.
 
+Likewise, you can lazy load a fragment cache.
+
 ## Installation
 Add this line to your application's Gemfile:
 
@@ -15,7 +17,7 @@ And then execute:
 $ bundle
 ```
 
-## Usage
+## Usage 1: Lazy Load Partial
 
 ### 1. Load javascript library
 
@@ -44,6 +46,23 @@ Partial must be specified as an absolute path.
 `app/views/top/index.html.erb`
 ```html
 <%= step_render 'top/partial_name' %>
+```
+
+## Usage 2: Lazy Load fragment cache
+
+### 1. Load javascript library
+
+### 2. Use `step_cache` method instead of `cache` method
+
+Replace `cache` helper method used to fragment cache with `step_render`.
+
+#### Example
+
+`app/views/top/index.html.erb`
+```html
+<%= step_cache 'cache_key', skip_digest: true, expires_in: 24.hours %>
+  ~~~
+  ~~~html tags
 ```
 
 ## Contributing
