@@ -2,11 +2,9 @@
 module StepRender
   module ViewHelper
     def step_render(*options)
-      key = "lazy-partial-#{SecureRandom.hex(12)}"
-      cookies.signed[key] = { value: Marshal.dump(ActiveJob::Arguments.serialize(options)), expires: 2.hour.from_now }
-      # if use cache store
-      # Rails.cache.fetch(key, skip_digest: true, expires_in: 10.minute) { ActiveJob::Arguments.serialize(options) }
-      %(<div class= "related-articles lazyload" data-include="#{step_render_path(key)}">loading</div>).html_safe
+      key = CGI.escape(Marshal.dump(options))
+      path = step_render_path(key)
+      %(<div class= "related-articles lazyload" data-include="#{path}">loading</div>).html_safe
     end
 
     def step_cache(key, **options)
