@@ -2,7 +2,7 @@
 module StepRender
   module ViewHelper
     def step_render(*options)
-      key = CGI.escape(Marshal.dump(options))
+      key = CGI.escape(Marshal.dump(ActiveJob::Arguments.serialize(options)))
       path = step_render_path(key)
       %(<div class= "related-articles lazyload" data-include="#{path}">loading</div>).html_safe
     end

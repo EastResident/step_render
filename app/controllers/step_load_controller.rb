@@ -2,7 +2,7 @@
 class StepLoadController < ApplicationController
   layout false
   def partial
-    @options = Marshal.load(CGI.unescape(params[:key]))
+    @options = ActiveJob::Arguments.deserialize(Marshal.load(CGI.unescape(params[:key])))
     render inline: "<%= render *@options %>"
   end
 
