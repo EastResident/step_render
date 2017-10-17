@@ -36,7 +36,21 @@ If you do not import lazysizes to your application, load `import_step_render` me
 </head>
 ```
 
-### 2. Use `step_render` method instead of `render` method
+### 2. Add to routing
+
+Add the following line to the `routes.rb`.
+
+#### Example
+
+`routes.rb`
+```html
+Rails.application.routes.draw do
+  ~~~
+  mount_step_render
+  ~~~
+```
+
+### 3. Use `step_render` method instead of `render` method
 
 Replace `render` helper method used to rendering the partial with `step_render`.
 Partial must be specified as an absolute path.
@@ -52,7 +66,9 @@ Partial must be specified as an absolute path.
 
 ### 1. Load javascript library
 
-### 2. Use `step_cache` method instead of `cache` method
+### 2. Add to routing
+
+### 3. Use `step_cache` method instead of `cache` method
 
 Replace `cache` helper method used to fragment cache with `step_render`.
 
